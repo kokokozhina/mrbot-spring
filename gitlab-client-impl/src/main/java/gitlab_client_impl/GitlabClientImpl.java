@@ -5,6 +5,7 @@ import org.gitlab.api.models.GitlabGroup;
 import org.gitlab.api.models.GitlabMergeRequest;
 import org.gitlab.api.models.GitlabProject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -12,13 +13,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
+@ComponentScan
 public class GitlabClientImpl {
 
     @Autowired
     private Groups groups;
 
     @Autowired
-    private GitlabAPI connection;
+    private GitlabAPI gitlabConnection;
 
     public Groups getGroups() {
         return groups;
@@ -28,12 +30,12 @@ public class GitlabClientImpl {
         this.groups = groups;
     }
 
-    public GitlabAPI getConnection() {
-        return connection;
+    public GitlabAPI getGitlabConnection() {
+        return gitlabConnection;
     }
 
-    public void setConnection(GitlabAPI connection) {
-        this.connection = connection;
+    public void setGitlabConnection(GitlabAPI gitlabConnection) {
+        this.gitlabConnection = gitlabConnection;
     }
 
     private List<GitlabGroup> getGroups(GitlabAPI api) throws IOException {
@@ -80,17 +82,17 @@ public class GitlabClientImpl {
         Set<String> setOfGroupsRequiringMergeRequests
                 = new HashSet<String>(groups.getGroups());
 
-        List<GitlabGroup> groups = this.getGroups(connection);
+        List<GitlabGroup> groups = this.getGroups(gitlabConnection);
         for (GitlabGroup group : groups) {
 
             if (!setOfGroupsRequiringMergeRequests.contains(group.getName())) {
                 continue;
             }
 
-            List<GitlabProject> projects = this.getGroupProjects(connection, group);
+            List<GitlabProject> projects = this.getGroupProjects(gitlabConnection, group);
             for (GitlabProject project : projects) {
 
-                List<GitlabMergeRequest> mergeRequests = this.getMergeRequests(connection, project);
+                List<GitlabMergeRequest> mergeRequests = this.getMergeRequests(gitlabConnection, project);
 
                 requiringMergeRequests.addAll(mergeRequests);
             }

@@ -1,0 +1,27 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "slack_impl.SlackConfigs",
+      "name": "",
+      "type": "slack_impl.SlackConfigs"
+    },
+    {
+      "sourceType": "slack_impl.Channels",
+      "name": "",
+      "type": "slack_impl.Channels"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "slack_impl.SlackConfigs",
+      "name": "auth-token",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "slack_impl.Channels",
+      "name": "channels",
+      "type": "java.util.List<java.lang.String>"
+    }
+  ]
+}

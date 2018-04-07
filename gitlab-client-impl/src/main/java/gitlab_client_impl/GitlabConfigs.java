@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @PropertySource("configs.yml")
 @ConfigurationProperties
-public class Configs {
+public class GitlabConfigs {
 
     @Value("${privateToken}")
     private String privateToken;

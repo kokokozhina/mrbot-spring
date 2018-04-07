@@ -2,14 +2,14 @@
   "hints": [],
   "groups": [
     {
+      "sourceType": "gitlab_client_impl.GitlabConfigs",
+      "name": "",
+      "type": "gitlab_client_impl.GitlabConfigs"
+    },
+    {
       "sourceType": "gitlab_client_impl.Groups",
       "name": "",
       "type": "gitlab_client_impl.Groups"
-    },
-    {
-      "sourceType": "gitlab_client_impl.Configs",
-      "name": "",
-      "type": "gitlab_client_impl.Configs"
     }
   ],
   "properties": [
@@ -19,12 +19,12 @@
       "type": "java.util.List<java.lang.String>"
     },
     {
-      "sourceType": "gitlab_client_impl.Configs",
+      "sourceType": "gitlab_client_impl.GitlabConfigs",
       "name": "host-url",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "gitlab_client_impl.Configs",
+      "sourceType": "gitlab_client_impl.GitlabConfigs",
       "name": "private-token",
       "type": "java.lang.String"
     }

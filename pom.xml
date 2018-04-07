@@ -10,6 +10,8 @@
         <module>bot</module>
         <module>git-client-api</module>
         <module>gitlab-client-impl</module>
+        <module>msgr-client-api</module>
+        <module>slack-impl</module>
     </modules>
     <packaging>pom</packaging>
 

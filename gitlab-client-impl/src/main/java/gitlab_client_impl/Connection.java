@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class Connection {
 
     @Bean
-    public GitlabAPI getConnection(@Autowired Configs configs) {
-        return GitlabAPI.connect(configs.getHostUrl(), configs.getPrivateToken());
+    public GitlabAPI getConnection(@Autowired GitlabConfigs gitlabConfigs) {
+        return GitlabAPI.connect(gitlabConfigs.getHostUrl(), gitlabConfigs.getPrivateToken());
     }
 
 }

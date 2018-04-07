@@ -9,21 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bot</artifactId>
+    <artifactId>slack-impl</artifactId>
+
     <dependencies>
         <dependency>
-            <groupId>mrbot-spring</groupId>
-            <artifactId>git-client-api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>mrbot-spring</groupId>
-            <artifactId>msgr-client-api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <groupId>com.ullink.slack</groupId>
+            <artifactId>simpleslackapi</artifactId>
+            <version>1.2.0</version>
         </dependency>
     </dependencies>
-
 
 </project>
