@@ -1,5 +1,6 @@
 package gitlab_client_impl;
 
+import git_client_api.GitClientApi;
 import org.gitlab.api.GitlabAPI;
 import org.gitlab.api.models.GitlabGroup;
 import org.gitlab.api.models.GitlabMergeRequest;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Component
 @ComponentScan
-public class GitlabClientImpl {
+public class GitlabClientImpl implements GitClientApi {
 
     @Autowired
     private Groups groups;
@@ -50,7 +51,7 @@ public class GitlabClientImpl {
         return api.getMergeRequests(project);
     }
 
-    private List<GitlabMergeRequest> excludeWipMergeRequests(List<GitlabMergeRequest> mergeRequests) {
+    private static List<GitlabMergeRequest> excludeWipMergeRequests(List<GitlabMergeRequest> mergeRequests) {
         List<GitlabMergeRequest> mergeRequestsWithoutWip = new ArrayList<GitlabMergeRequest>();
 
         for (GitlabMergeRequest mergeRequest : mergeRequests) {
@@ -62,7 +63,7 @@ public class GitlabClientImpl {
         return mergeRequestsWithoutWip;
     }
 
-    private String printMergeRequest(GitlabMergeRequest mergeRequest) {
+    private static String printMergeRequest(GitlabMergeRequest mergeRequest) {
         String mrToString = "Merge Request №" + mergeRequest.getId()
                 + "\ntitle: " + mergeRequest.getTitle()
                 + "\nfrom: " + mergeRequest.getSourceBranch()
@@ -70,12 +71,12 @@ public class GitlabClientImpl {
         return mrToString;
     }
 
-    private List<String> convertMergeRequestsToStringList(List<GitlabMergeRequest> mergeRequests) {
+    private static List<String> convertMergeRequestsToStringList(List<GitlabMergeRequest> mergeRequests) {
         return mergeRequests.stream().map(s -> printMergeRequest(s)).collect(Collectors.toList());
     }
 
-    public List<String> getRequiringMergeRequests() throws IOException {
-
+    @Override
+    public List<String> getMergeRequests() throws IOException {
         List<GitlabMergeRequest> requiringMergeRequests = new ArrayList<GitlabMergeRequest>();
 
 
@@ -83,6 +84,7 @@ public class GitlabClientImpl {
                 = new HashSet<String>(groups.getGroups());
 
         List<GitlabGroup> groups = this.getGroups(gitlabConnection);
+
         for (GitlabGroup group : groups) {
 
             if (!setOfGroupsRequiringMergeRequests.contains(group.getName())) {
@@ -98,8 +100,7 @@ public class GitlabClientImpl {
             }
         }
 
-        requiringMergeRequests = this.excludeWipMergeRequests(requiringMergeRequests);
-        return this.convertMergeRequestsToStringList(requiringMergeRequests);
+        requiringMergeRequests = excludeWipMergeRequests(requiringMergeRequests);
+        return convertMergeRequestsToStringList(requiringMergeRequests);
     }
-
 }

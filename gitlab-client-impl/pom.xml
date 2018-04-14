@@ -17,6 +17,11 @@
             <artifactId>java-gitlab-api</artifactId>
             <version>4.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>mrbot-spring</groupId>
+            <artifactId>git-client-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

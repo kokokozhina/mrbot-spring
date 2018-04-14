@@ -19,7 +19,19 @@
         </dependency>
         <dependency>
             <groupId>mrbot-spring</groupId>
+            <artifactId>gitlab-client-impl</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>mrbot-spring</groupId>
             <artifactId>msgr-client-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>mrbot-spring</groupId>
+            <artifactId>slack-impl</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

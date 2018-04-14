@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 @SpringBootApplication
+@EnableScheduling
 @ComponentScan({"git_client_api", "gitlab_client_impl", "msgr_client_api", "slack_impl"})
 public class Bot {
 
@@ -22,8 +23,8 @@ public class Bot {
     @Autowired
     private MsgrClientApi msgrClientApi;
 
-    @PostConstruct
-    public void main() throws IOException {
+    @Scheduled(fixedDelay = 10000)
+    public void notifyOfMergeRequests() throws IOException {
         msgrClientApi.postToSlackChannels(gitClientApi.getMergeRequests());
     }
 

@@ -1,8 +1,0 @@
-Merge Request №5
-title: Add pupperino
-from: add-pupperino
-to: master
-Merge Request №3
-title: Test branch for parrots
-from: test-branch-for-parrots
-to: master

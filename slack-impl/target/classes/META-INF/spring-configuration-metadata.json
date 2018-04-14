@@ -2,14 +2,14 @@
   "hints": [],
   "groups": [
     {
-      "sourceType": "slack_impl.SlackConfigs",
-      "name": "",
-      "type": "slack_impl.SlackConfigs"
-    },
-    {
       "sourceType": "slack_impl.Channels",
       "name": "",
       "type": "slack_impl.Channels"
+    },
+    {
+      "sourceType": "slack_impl.SlackConfigs",
+      "name": "",
+      "type": "slack_impl.SlackConfigs"
     }
   ],
   "properties": [

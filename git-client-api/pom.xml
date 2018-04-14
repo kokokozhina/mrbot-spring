@@ -10,14 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>git-client-api</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>mrbot-spring</groupId>
-            <artifactId>gitlab-client-impl</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
 
 
 </project>
